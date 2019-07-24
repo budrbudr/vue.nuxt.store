@@ -47,6 +47,9 @@ export default {
     let news = [];
     try {
       news = await $axios.$get('/comments.json');
+       news.map((data, index) => {
+        news[index].quantityOfComments = data.comments.length;
+      })
     } catch (e) {
       console.warn(e)
     }
